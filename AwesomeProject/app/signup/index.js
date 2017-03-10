@@ -18,13 +18,47 @@ const birthdayIcon = require("./signup_birthday.png");
 
 export default class SignupVriew extends Component {
 
+ constructor(props) {
+    super(props);
+    this.state = { 
+      name: null,
+      email: null,
+      password:null
+    };
+  }
+
     
 _navigate(){
     // alert('good');
      this.props.navigator.push({
     name: 'LoginScreen', // Matches route.name
+    
   })
 }
+
+_signup(){
+ let username = this.state.email;
+ let name = this.state.name
+ let emial = this.state.email;
+ let password = this.state.password;
+
+
+    fetch('http://192.168.0.101/fyp/user', {
+  method: 'POST',
+  headers: {
+    // 'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    username: username,
+    name: name,
+    email: emial,
+    password: password
+  })
+});
+
+}
+
   render() {
     return (
       <View style={styles.container}>
@@ -65,8 +99,11 @@ _navigate(){
               <TextInput
                 style={[styles.input, styles.whiteFont]}
                 placeholder="Name"
+                ref="name"
                 placeholderTextColor="#FFF"
                 underlineColorAndroid='transparent' 
+                 onChangeText={(name) => this.setState({name})}
+                
               />
             </View>
 
@@ -82,6 +119,7 @@ _navigate(){
                 style={[styles.input, styles.whiteFont]}
                 placeholder="Email"
                 placeholderTextColor="#FFF" 
+                onChangeText={(email) => this.setState({email})}
               />
             </View>
 
@@ -98,10 +136,11 @@ _navigate(){
                 style={[styles.input, styles.whiteFont]}
                 placeholder="Password"
                 placeholderTextColor="#FFF" 
+                onChangeText={(password) => this.setState({password})}
               />
             </View>
 
-            <View style={styles.inputContainer}>
+            {/*<View style={styles.inputContainer}>
               <View style={styles.iconContainer}>
                 <Image 
                   source={birthdayIcon} 
@@ -115,13 +154,13 @@ _navigate(){
                 placeholderTextColor="#FFF"
                 underlineColorAndroid='transparent' 
               />
-            </View>
+            </View>*/}
 
           </View>
 
           <View style={styles.footerContainer}>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={this._signup.bind(this)}>
               <View style={styles.signup}>
                 <Text style={styles.whiteFont}  >Join</Text>
               </View>
@@ -153,7 +192,7 @@ let styles = StyleSheet.create({
   },
   inputsContainer: {
     flex: 3,
-    marginTop: 50,
+    // marginTop: 50,
   },
   footerContainer: {
     flex: 1
@@ -172,6 +211,7 @@ let styles = StyleSheet.create({
   },
   headerTitleView: {
     backgroundColor: 'transparent',
+    alignItems:'center',
     marginTop: 25,
     marginLeft: 25,
   },

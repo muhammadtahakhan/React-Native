@@ -27,7 +27,8 @@ export default class AwesomeProject extends Component {
   super(props);
   this.state = {
     showToast: false,
-    toastdata : "Hello Taha khan"
+    toastdata : "Hello Taha khan",
+     date: ''
   }
 }
 
@@ -70,7 +71,7 @@ Toast.show({
                       {/*<TouchableOpacity onPress={ () => this._navigate() }>
     <Text>GO To View</Text>
 </TouchableOpacity>*/}
-          
+            
                       <Navigator
                             style={{ flex:1 }}
                             initialRoute={{ name: 'LoginScreen' }}
@@ -100,6 +101,18 @@ Toast.show({
             </Container>
     );
   }
+
+
+  //  componentWillMount() {
+  //   fetch("http://192.168.0.101/fyp/user/2")
+  //     .then((response) => response.json())
+  //     .then((responseData) => {
+  //       console.log('a');
+  //       this.setState({date: responseData.result});
+  //     })
+  //     .done();
+  // }
+
 }
 
 const styles = StyleSheet.create({
