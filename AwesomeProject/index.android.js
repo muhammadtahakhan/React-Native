@@ -5,51 +5,57 @@
  */
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Button, Left, Right, Body, Icon, Content, Footer, FooterTab } from 'native-base';
+import {Toast, Container, Header, Title, Button, Left, Right, Body, Icon, Content, Footer, FooterTab, Drawer } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import LoginScreen from "./app/login/index";
+import SignupScreen from "./app/signup/index";
+import Slider from './app/slider'
 import {
+    Navigator,
+    TouchableOpacity,
   AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
-import Swiper from 'react-native-swiper';
 
 
-var styles = StyleSheet.create({
-  wrapper: {
-  },
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  }
-})
+
 
 export default class AwesomeProject extends Component {
+     constructor(props) {
+  super(props);
+  this.state = {
+    showToast: false,
+    toastdata : "Hello Taha khan"
+  }
+}
+
+renderScene(route, navigator) {
+    
+   if(route.name == 'LoginScreen') {
+     return <LoginScreen navigator={navigator} />
+   }
+   if(route.name == 'SignupScreen') {
+     return <SignupScreen navigator={navigator} />
+   }
+}
+
+showtoast(){
+    // alert(this.state.toastdata);
+Toast.show({
+              text: this.state.toastdata,
+              position: 'bottom',
+              buttonText: 'Okay'
+            })
+}
+
   render() {
+     
     return (
       <Container>
-      
-                <Header>
+        
+              {/*<Header>
                     <Left>
                         <Button transparent>
                             <Icon name='menu' />
@@ -59,25 +65,23 @@ export default class AwesomeProject extends Component {
                         <Title>home</Title>
                     </Body>
                     <Right />
-                </Header>
-                  <Content>
-                          <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
-                          <View style={styles.slide1}>
-                          <Text style={styles.text}>Hello Swiper</Text>
-                          </View>
-                          <View style={styles.slide2}>
-                          <Text style={styles.text}>Beautiful</Text>
-                          </View>
-                          <View style={styles.slide3}>
-                          <Text style={styles.text}>And simple</Text>
-                          </View>
-                          </Swiper>
-                    <Grid>
-                        <Col style={{ backgroundColor: '#635DB7', height: 200 }}></Col>
-                        <Col style={{ backgroundColor: '#00CE9F', height: 200  }}></Col>
-                    </Grid>
-                </Content>
-                 <Footer>
+                </Header>*/}
+                  {/*<Content>*/}
+                      {/*<TouchableOpacity onPress={ () => this._navigate() }>
+    <Text>GO To View</Text>
+</TouchableOpacity>*/}
+          
+                      <Navigator
+                            style={{ flex:1 }}
+                            initialRoute={{ name: 'LoginScreen' }}
+                            renderScene={ this.renderScene.bind(this) } 
+                            configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
+                            />
+                      {/*<LoginScreen />
+                     <SignupScreen /> */}
+                  
+                   {/*</Content>*/}
+                 {/*<Footer>
                    <FooterTab>
                         <Button>
                             <Text>Apps</Text>
@@ -92,7 +96,7 @@ export default class AwesomeProject extends Component {
                             <Text>Contact</Text>
                         </Button>
                     </FooterTab>
-                </Footer>
+                </Footer>*/}
             </Container>
     );
   }
