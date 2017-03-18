@@ -30,7 +30,7 @@ export default class SignupVriew extends Component {
     
 _navigate(){
     // alert('good');
-     this.props.navigator.push({
+     this.props.navigator.pop({
     name: 'LoginScreen', // Matches route.name
     
   })
@@ -43,7 +43,7 @@ _signup(){
  let password = this.state.password;
 
 
-    fetch('http://192.168.0.101/fyp/user', {
+    fetch('http://192.168.0.103/fyp/user', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -55,7 +55,11 @@ _signup(){
     email: emial,
     password: password
   })
-});
+    })
+      .then(
+        ()=>{   this._navigate()}
+        )
+
 
 }
 
