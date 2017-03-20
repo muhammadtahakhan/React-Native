@@ -9,6 +9,7 @@ import {Toast, Container, Header, Title, Button, Left, Right, Body, Icon, Conten
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import LoginScreen from "./app/login/index";
 import SignupScreen from "./app/signup/index";
+import UploadForm from "./app/upload/index";
 import Slider from './app/slider'
 import {
     Navigator,
@@ -78,6 +79,7 @@ Toast.show({
                             renderScene={ this.renderScene.bind(this) } 
                             configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
                             />
+                          
                       {/*<LoginScreen />
                      <SignupScreen /> */}
                   
