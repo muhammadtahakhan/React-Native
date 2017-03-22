@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Toast} from 'native-base';
 import {
   AppRegistry,
   StyleSheet,
@@ -8,7 +9,8 @@ import {
   Dimensions,
   TextInput,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from 'react-native';
 
 const { width, height } = Dimensions.get("window");
@@ -20,6 +22,24 @@ const personIcon = require("./login1_person.png");
 
 export default class LoginScreen extends Component {
 
+constructor(props) {
+    super(props);
+    this.state = { 
+      username: null,
+      password:null,
+      toastdata:null
+    };
+  }
+showtoast(){
+    // alert(this.state.toastdata);
+Toast.show({
+              text: this.state.toastdata,
+              position: 'bottom',
+              buttonText: 'Okay'
+            })
+}
+
+
 _navigate(){
   this.props.navigator.push({
     name: 'SignupScreen', // Matches route.name
@@ -27,13 +47,11 @@ _navigate(){
 }
 
 _login(){
- let username = this.state.name;
- let name = this.state.name
- let emial = this.state.email;
- let password = this.state.password;
+  let username = this.state.username;
+  let password = this.state.password;
 
 
-    fetch('http://192.168.10.7/fyp/token', {
+    fetch('http://192.168.0.102/fyp/token', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -41,15 +59,26 @@ _login(){
   },
   body: JSON.stringify({
     username: username,
-    email: emial,
     password: password
   })
     }) .then((response) => response.json()) 
-    .then((responseJson) => { console.log(responseJson) }) 
+    .then((responseJson) => { 
+        //  console.log(responseJson);
+                   if(responseJson.status!= "0"){
+             AsyncStorage.setItem('@MySuperStore:jtoken', responseJson.token);
+                this.props.navigator.push({
+                name: 'UploadForm', // Matches route.name
+              })
+                     }else{
+                         this.setState({toastdata: "user not found"});
+                         this.showtoast();
+                     }
+     }) 
     .catch((error) => { console.error(error); });
-
-
 }
+
+
+
 
   render() {
     return (
@@ -67,6 +96,7 @@ _login(){
                 placeholder="email" 
                 placeholderTextColor="#FFF"
                 style={styles.input} 
+                 onChangeText={(username) => this.setState({username})}
               />
             </View>
             <View style={styles.inputWrap}>
@@ -78,14 +108,15 @@ _login(){
                 placeholder="Password" 
                 style={styles.input} 
                 secureTextEntry 
+                 onChangeText={(password) => this.setState({password})}
               />
             </View>
-            <TouchableOpacity activeOpacity={.5}>
+            <TouchableOpacity activeOpacity={.5} onPress = {()=>{AsyncStorage.getItem('@MySuperStore:jtoken').then((va)=>{console.log(va)})}}>
               <View>
                 <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={.5}>
+            <TouchableOpacity activeOpacity={.5} onPress={this._login.bind(this)}>
               <View style={styles.button}>
                 <Text style={styles.buttonText} >Sign In</Text>
               </View>

@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Toast} from 'native-base';
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View,
   Image,
+  Dimensions,
   TextInput,
-  TouchableOpacity
-} from 'react-native'
+  Button,
+  TouchableOpacity,
+  AsyncStorage
+} from 'react-native';
 
 const background = require("./signup_bg.png");
 const backIcon = require("./back.png");
@@ -38,12 +42,12 @@ _navigate(){
 
 _signup(){
  let username = this.state.email;
- let name = this.state.name
+ let myname = this.state.name
  let emial = this.state.email;
  let password = this.state.password;
 
 
-    fetch('http://192.168.10.7/fyp/token', {
+    fetch('http://192.168.0.102/fyp/user', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -51,15 +55,17 @@ _signup(){
   },
   body: JSON.stringify({
     username: username,
-    name: name,
+    name:myname,
     email: emial,
     password: password
   })
-    }) .then((response) => response.json()) 
-    .then((responseJson) => { console.log(responseJson) }) 
-    .catch((error) => { console.error(error); });
-
-
+    }) 
+    // .then(  (response) => response.json()  ) 
+    .then((responseJson) => { 
+      console.log(responseJson);
+     this._navigate();
+     }) 
+    // .catch((error) => { console.error(error); });
 }
 
   render() {
