@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Toast, Container, Content, List, ListItem, Text, Card, CardItem, Body } from 'native-base';
+import {Toast, Container, Content, List, ListItem, Text, Card, CardItem, Body,  Footer, FooterTab, Button } from 'native-base';
 import {
   AppRegistry,
   StyleSheet,
@@ -7,7 +7,6 @@ import {
   Image,
   Dimensions,
   TextInput,
-  Button,
   TouchableOpacity,
   AsyncStorage
 } from 'react-native';
@@ -24,11 +23,35 @@ export default class Folders extends Component {
 constructor(props) {
     super(props);
     this.state = { 
-      username: null,
-      password:null,
-      toastdata:null
+      categories: [],
+      toastdata:null,
+      utoken:null
     };
+     
+         
   }
+
+ tick() {
+    fetch('http://172.23.160.190/fyp/categories', {
+                  method: 'GET',
+                  headers: {
+                  'authorization': this.state.utoken,
+                  'Content-Type': 'application/json',
+                  }
+                  })
+                  .then((response) => response.json()) 
+                  .then((responseJson) => { 
+                    this.setState({categories:responseJson.result})
+                  console.log(this.state.categories);
+                  if(responseJson.status==0){
+                  alert('login first');
+                  this._navigateLogin();
+                  }
+
+                  }) 
+                  .catch((error) => { console.error(error); });
+  }
+
 showtoast(){
     // alert(this.state.toastdata);
 Toast.show({
@@ -45,6 +68,21 @@ _navigate(){
   })
 }
 
+
+_upload_notes(){
+    // alert('good');
+     this.props.navigator.push({
+    name: 'Uploadnotes', // Matches route.name
+    
+  })
+}
+
+_create_cate(){
+  this.props.navigator.push({
+    name: 'Createcate', // Matches route.name
+  })
+}
+
   
 _navigateLogin(){
     // alert('good');
@@ -53,45 +91,56 @@ _navigateLogin(){
     
   })
 }
+ 
+componentWillMount(){
+
+
+
+}
 
 componentDidMount(){
+  AsyncStorage.getItem("@MySuperStore:jtoken")
+        .then((value) => { 
+          // console.log('in ' + value);
+        this.setState({"utoken": value});  
+                  fetch('http://172.23.160.190/fyp/categories', {
+                  method: 'GET',
+                  headers: {
+                  'authorization': this.state.utoken,
+                  'Content-Type': 'application/json',
+                  }
+                  })
+                  .then((response) => response.json()) 
+                  .then((responseJson) => { 
+                    this.setState({categories:responseJson.result})
+                  console.log(this.state.categories);
+                  if(responseJson.status==0){
+                  alert('login first');
+                  this._navigateLogin();
+                  }
+
+                  }) 
+                  .catch((error) => { console.error(error); });
+         } );
+ 
+console.log(this.state.utoken);
 
 
-    fetch('http://192.168.0.102/fyp/users', {
-  method: 'GEt',
-  headers: {
-    'authorization': AsyncStorage.getItem('@MySuperStore:jtoken'),
-    'Content-Type': 'application/json',
-  }
-    }) .then((response) => response.json()) 
-    .then((responseJson) => { 
-         console.log(responseJson.status);
-         if(responseJson.status==0){
-           alert('login first');
-           this._navigateLogin();
-         }
-         
-            //        if(responseJson.status!= "0"){
-            //  AsyncStorage.setItem('@MySuperStore:jtoken', responseJson.token);
-            //     this.props.navigator.push({
-            //     name: 'UploadForm', // Matches route.name
-            //   })
-            //          }else{
-            //              this.setState({toastdata: "user not found"});
-            //              this.showtoast();
-            //          }
-     }) 
-    .catch((error) => { console.error(error); });
 }
 
 
 
 
   render() {
-     var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
+    var items = this.state.categories
+    //  var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
 
     return (
      <Container>
+        <Image 
+          source={background} 
+          style={[styles.container, styles.bg]}
+          resizeMode="cover">
                 <Content>
                     <List dataArray={items}
                         renderRow={(item) =>
@@ -99,7 +148,7 @@ componentDidMount(){
                         <CardItem>
                             <Body>
                                 <Text>
-                                   {item}
+                                   {item.category_name}
                                 </Text>
                             </Body>
                         </CardItem>
@@ -108,11 +157,33 @@ componentDidMount(){
                     </List>
                    
                 </Content>
+                 </Image>
+                 <Footer>
+                    <FooterTab style={{ backgroundColor: "#FF3366"}}>
+                        <Button style={{ backgroundColor: "#FFC0CB"}} >
+                            <Text style={{color: "#FFF"}} >Faq Notes</Text>
+                        </Button>
+
+                        <Button onPress={ () => this._create_cate() }>
+                            <Text style={{color: "#FFF"}}>Create Category</Text>
+                        </Button>
+                        <Button onPress={()=> this._upload_notes()}>
+                            <Text style={{color: "#FFF"}}>Upload Notes</Text>
+                        </Button>
+                  </FooterTab>
+                </Footer>
+               
             </Container>
     );
   }
 }
 const styles = StyleSheet.create({
+  
+  bg: {
+    paddingTop: 30,
+    width: null,
+    height: null
+  },
   container: {
     flex: 1,
   },
@@ -179,7 +250,7 @@ const styles = StyleSheet.create({
     color: "#D8D8D8"
   },
   signupLinkText: {
-    color: "#FFF",
-    marginLeft: 5,
+     backgroundColor: 'transparent',
+    alignItems:'center',
   }
 });

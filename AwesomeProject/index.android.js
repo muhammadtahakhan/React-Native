@@ -10,7 +10,9 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import LoginScreen from "./app/login/index";
 import SignupScreen from "./app/signup/index";
 import UploadForm from "./app/upload/index";
+import Uploadnotes from "./app/upload_notes/index";
 import Folders from "./app/folders/index";
+import Createcate from "./app/create_category/index";
 import Slider from './app/slider'
 import {
     Navigator,
@@ -43,10 +45,17 @@ renderScene(route, navigator) {
      return <SignupScreen navigator={navigator} />
    }
    if(route.name == 'UploadForm') {
-     return <UploadForm />
+     return <UploadForm navigator={navigator} />
    }
    if(route.name == 'Folders') {
      return <Folders navigator={navigator}/>
+   }
+  
+    if(route.name == 'Createcate') {
+     return <Createcate navigator={navigator}/>
+   }
+   if(route.name == 'Uploadnotes') {
+     return <Uploadnotes navigator={navigator}/>
    }
 }
 
@@ -82,7 +91,7 @@ Toast.show({
             
                       <Navigator
                             style={{ flex:1 }}
-                            initialRoute={{ name: 'Folders' }}
+                            initialRoute={{ name: 'LoginScreen' }}
                             renderScene={ this.renderScene.bind(this) } 
                             configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
                             />

@@ -10,8 +10,8 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
-  AsyncStorage
-} from 'react-native';
+  AsyncStorage,
+  } from 'react-native';
 
 const { width, height } = Dimensions.get("window");
 
@@ -27,7 +27,8 @@ constructor(props) {
     this.state = { 
       username: null,
       password:null,
-      toastdata:null
+      toastdata:null,
+      utoken:null
     };
   }
 showtoast(){
@@ -46,12 +47,42 @@ _navigate(){
   })
 }
 
+componentWillMount(){
+
+AsyncStorage.getItem("@MySuperStore:jtoken")
+        .then((value) =>{ 
+          // console.log('in ' + value);
+        this.setState({"utoken": value});  
+                  fetch('http://172.23.160.190/fyp/users', {
+                  method: 'GET',
+                  headers: {
+                  'authorization': this.state.utoken,
+                  'Content-Type': 'application/json',
+                  }
+                  })
+                  .then((response) => response.json()) 
+                  .then((responseJson) => { 
+                  console.log(responseJson.status);
+                  if(responseJson.status!=0){
+                  this.props.navigator.push({
+                      name: 'Folders', // Matches route.name
+                    });
+                  }
+
+                  }) 
+                  .catch((error) => { console.error(error); });
+         });
+
+}
+
+
+
 _login(){
   let username = this.state.username;
   let password = this.state.password;
 
 
-    fetch('http://192.168.0.102/fyp/token', {
+    fetch('http://172.23.160.190/fyp/token', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -65,9 +96,19 @@ _login(){
     .then((responseJson) => { 
         //  console.log(responseJson);
                    if(responseJson.status!= "0"){
+                     
              AsyncStorage.setItem('@MySuperStore:jtoken', responseJson.token);
-                this.props.navigator.push({
-                name: 'UploadForm', // Matches route.name
+// try {
+//     AsyncStorage.getItem("@MySuperStore:jtoken").then((value) => {
+//     console.log(value);
+//     });
+
+// } catch (error) {
+//       // Error retrieving data
+//       console.log("error in async token");
+// }
+                    this.props.navigator.push({
+                name: 'Folders', // Matches route.name
               })
                      }else{
                          this.setState({toastdata: "user not found"});
