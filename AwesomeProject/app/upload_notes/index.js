@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ModalPicker from 'react-native-modal-picker'
 import {Toast, Container, Content, List, ListItem, Text, Card, CardItem, Body,  Footer, FooterTab, Button } from 'native-base';
 import {
   AppRegistry,
@@ -25,7 +26,11 @@ export default class Uploadnotes extends Component {
 constructor(props) {
     super(props);
     this.state = { 
-      name: null
+      name: null,
+      category_id: null,
+      meta_date:null,
+      notes:null
+
          };
   }
 
@@ -45,7 +50,7 @@ _create_cate(){
 _create(){
  let name = this.state.name;
  console.log(name);
-    fetch('http://172.23.160.190/fyp/categoty', {
+    fetch('http://192.168.0.103/fyp/categoty', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -69,6 +74,24 @@ _create(){
 }
 
   render() {
+     let index = 0;
+        const data = [
+           
+            { key: index++, label: 'Red Apples' },
+            { key: index++, label: 'Cherries' },
+            { key: index++, label: 'Cranberries' },
+            { key: index++, label: 'Pink Grapefruit' },
+            { key: index++, label: 'Raspberries' },
+        
+            { key: index++, label: 'Beets' },
+            { key: index++, label: 'Red Peppers' },
+            { key: index++, label: 'Radishes' },
+            { key: index++, label: 'Radicchio' },
+            { key: index++, label: 'Red Onions' },
+            { key: index++, label: 'Red Potatoes' },
+            { key: index++, label: 'Rhubarb' },
+            { key: index++, label: 'Tomatoes' }
+        ];
     return (
       <View style={styles.container}>
         <Image 
@@ -80,7 +103,7 @@ _create(){
            
 
             <View style={styles.headerTitleView}>
-              <Text style={styles.titleViewText}>New Category</Text>
+              <Text style={styles.titleViewText}>Upload New Faq Notes</Text>
             </View>
            
           </View>
@@ -92,13 +115,30 @@ _create(){
                </View>
               <TextInput
                 style={[styles.input, styles.whiteFont]}
-                placeholder="Category Name"
+                placeholder="Faq Note Name"
                 ref="name"
                 placeholderTextColor="#FFF"
                 underlineColorAndroid='transparent' 
                  onChangeText={(name) => this.setState({name})}
                 
               />
+
+              
+              
+            </View>
+            
+             <View style={{flex:1,  padding:20}}>
+                <ModalPicker
+                    data={data}
+                    initValue="Select Category!"
+                    onChange={(option)=>{ this.setState({textInputValue:option.label, category_id:option.key});  alert(option.key);}}>
+                    <TextInput
+                        style={{color: 'white', borderWidth:1, borderColor:'#ccc', padding:10, height:60}}
+                        editable={false}
+                        placeholder="Select Category!"
+                        value={this.state.textInputValue} />
+                        
+                </ModalPicker>
             </View>
            </View>
 
