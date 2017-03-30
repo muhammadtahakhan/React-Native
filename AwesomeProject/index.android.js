@@ -9,7 +9,7 @@ import {Toast, Container, Header, Title, Button, Left, Right, Body, Icon, Conten
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import LoginScreen from "./app/login/index";
 import SignupScreen from "./app/signup/index";
-import UploadForm from "./app/upload/index";
+// import UploadForm from "./app/upload/index";
 import Uploadnotes from "./app/upload_notes/index";
 import Folders from "./app/folders/index";
 import Createcate from "./app/create_category/index";
@@ -44,9 +44,9 @@ renderScene(route, navigator) {
    if(route.name == 'SignupScreen') {UploadForm
      return <SignupScreen navigator={navigator} />
    }
-   if(route.name == 'UploadForm') {
-     return <UploadForm navigator={navigator} />
-   }
+  //  if(route.name == 'UploadForm') {
+  //    return <UploadForm navigator={navigator} />
+  //  }
    if(route.name == 'Folders') {
      return <Folders navigator={navigator}/>
    }

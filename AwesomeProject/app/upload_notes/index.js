@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ModalPicker from 'react-native-modal-picker';
-import ImagePicker from 'react-native-image-picker';
+// import ImagePicker from 'react-native-image-picker';
 import {Toast, Container, Content, List, ListItem, Text, Card, CardItem, Body,  Footer, FooterTab, Button } from 'native-base';
 import {
   AppRegistry,
@@ -21,6 +21,8 @@ const personIcon = require("./signup_person.png");
 const lockIcon = require("./signup_lock.png");
 const emailIcon = require("./signup_email.png");
 const birthdayIcon = require("./signup_birthday.png");
+
+const FilePickerManager = require('NativeModules').FilePickerManager;
 
 export default class Uploadnotes extends Component {
 
@@ -48,29 +50,46 @@ constructor(props) {
       }
     };
 
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        console.log('User cancelled photo picker');
-      }
-      else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      }
-      else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-      }
-      else {
-        let source = { uri: response.uri };
-
-        // You can also display the image using data:
-        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
-
-        this.setState({
-          avatarSource: source
-        });
-      }
+    FilePickerManager.showFilePicker(null, (response) => {
+  console.log('Response = ', response);
+ 
+  if (response.didCancel) {
+    console.log('User cancelled file picker');
+  }
+  else if (response.error) {
+    console.log('FilePickerManager Error: ', response.error);
+  }
+  else {
+    console.log(response);
+    this.setState({
+      file: response
     });
+  }
+});
+
+    // ImagePicker.showImagePicker(options, (response) => {
+    //   console.log('Response = ', response);
+
+    //   if (response.didCancel) {
+    //     console.log('User cancelled photo picker');
+    //   }
+    //   else if (response.error) {
+    //     console.log('ImagePicker Error: ', response.error);
+    //   }
+    //   else if (response.customButton) {
+    //     console.log('User tapped custom button: ', response.customButton);
+    //   }
+    //   else {
+    //     let source = { uri: response.uri };
+
+    //     // You can also display the image using data:
+    //     // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+    //     this.setState({
+    //       avatarSource: source
+    //     });
+    //   }
+    // });
   }
 
     
