@@ -91,7 +91,7 @@ Toast.show({
             
                       <Navigator
                             style={{ flex:1 }}
-                            initialRoute={{ name: 'LoginScreen' }}
+                            initialRoute={{ name: 'Uploadnotes' }}
                             renderScene={ this.renderScene.bind(this) } 
                             configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
                             />
