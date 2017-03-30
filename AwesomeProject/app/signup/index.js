@@ -47,7 +47,7 @@ _signup(){
  let password = this.state.password;
 
 
-    fetch('http://192.168.0.103/fyp/user', {
+    fetch('http://172.23.160.190/fyp/user', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
