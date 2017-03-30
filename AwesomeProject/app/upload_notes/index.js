@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ModalPicker from 'react-native-modal-picker';
 // import ImagePicker from 'react-native-image-picker';
+import RNFetchBlob from 'react-native-fetch-blob';
 import {Toast, Container, Content, List, ListItem, Text, Card, CardItem, Body,  Footer, FooterTab, Button } from 'native-base';
 import {
   AppRegistry,
@@ -108,7 +109,7 @@ _create_cate(){
 _create(){
  let name = this.state.name;
  console.log(name);
-    fetch('http://172.23.160.190/fyp/categoty', {
+    fetch('http://192.168.0.103/fyp/categoty', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
