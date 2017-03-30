@@ -34,8 +34,8 @@ constructor(props) {
       category_id: null,
       meta_date:null,
       notes:null,
-       avatarSource: null,
-    videoSource: null
+      file:null
+     
 
          };
   }
@@ -61,36 +61,13 @@ constructor(props) {
     console.log('FilePickerManager Error: ', response.error);
   }
   else {
-    console.log(response);
+    console.log(response.path);
+    console.log(response.uri);
     this.setState({
       file: response
     });
   }
 });
-
-    // ImagePicker.showImagePicker(options, (response) => {
-    //   console.log('Response = ', response);
-
-    //   if (response.didCancel) {
-    //     console.log('User cancelled photo picker');
-    //   }
-    //   else if (response.error) {
-    //     console.log('ImagePicker Error: ', response.error);
-    //   }
-    //   else if (response.customButton) {
-    //     console.log('User tapped custom button: ', response.customButton);
-    //   }
-    //   else {
-    //     let source = { uri: response.uri };
-
-    //     // You can also display the image using data:
-    //     // let source = { uri: 'data:image/jpeg;base64,' + response.data };
-
-    //     this.setState({
-    //       avatarSource: source
-    //     });
-    //   }
-    // });
   }
 
     
@@ -200,6 +177,12 @@ _create(){
                 </ModalPicker>
             </View>
            </View>
+        
+          <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+          <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
+        <Text>Select a Photo</Text>
+          </View>
+        </TouchableOpacity>
 
           <View style={styles.footerContainer}>
 
@@ -210,13 +193,7 @@ _create(){
               </View>
             </TouchableOpacity>
           </View>
-           <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
-          <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
-          { this.state.avatarSource === null ? <Text>Select a Photo</Text> :
-            <Image style={styles.avatar} source={this.state.avatarSource} />
-          }
-          </View>
-        </TouchableOpacity>
+          
              
           <Footer>
                     <FooterTab style={{ backgroundColor: "#FF3366"}}>
