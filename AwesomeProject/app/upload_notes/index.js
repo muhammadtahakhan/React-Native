@@ -61,13 +61,34 @@ constructor(props) {
     console.log('FilePickerManager Error: ', response.error);
   }
   else {
-    console.log(response.path);
+    console.log(response);
     console.log(response.uri);
     this.setState({
       file: response
     });
+    // this.Upload_now();
   }
 });
+  }
+
+  Upload_now(){
+    
+     RNFetchBlob.fetch('POST', 'http://192.168.0.106/fyp/faqnotes', {
+    // Authorization : "Bearer access-token",
+    otherHeader : "foo",
+    'Content-Type' : 'multipart/form-data',
+  }, [
+   
+  { name : 'name', data : 'name of notes'},
+  { name : 'category_id', data : '10' },
+   { name : 'notes', data: RNFetchBlob.wrap(RNFetchBlob.fs.readFile(this.state.file.uri)) },
+      
+  ]).then((resp) => {
+    console.log(resp);
+  }).catch((err) => {
+    console.log(err);
+  })
+
   }
 
     
@@ -82,31 +103,6 @@ _create_cate(){
   this.props.navigator.push({
     name: 'Createcate', // Matches route.name
   })
-}
-_create(){
- let name = this.state.name;
- console.log(name);
-    fetch('http://192.168.0.103/fyp/categoty', {
-  method: 'POST',
-  headers: {
-    // 'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    category_name:name,
-   
-  })
-    }) 
-    // .then(  (response) => response.json()  ) 
-    .then((responseJson) => { 
-      console.log(responseJson);
-       this.props.navigator.push({
-    name: 'Folders', // Matches route.name
-    
-  })
-    
-     }) 
-    // .catch((error) => { console.error(error); });
 }
 
   render() {
@@ -187,9 +183,9 @@ _create(){
           <View style={styles.footerContainer}>
 
         
-           <TouchableOpacity activeOpacity={.5}  onPress={this._create.bind(this)}>
+           <TouchableOpacity activeOpacity={.5}  onPress={this.Upload_now.bind(this)}>
               <View style={styles.button}>
-                <Text style={styles.buttonText} >Create</Text>
+                <Text style={styles.buttonText} >Upload Notes</Text>
               </View>
             </TouchableOpacity>
           </View>
