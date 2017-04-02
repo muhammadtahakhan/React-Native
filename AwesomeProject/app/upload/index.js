@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -129,4 +129,4 @@ const styles = StyleSheet.create({
 
 
 
-
+*/

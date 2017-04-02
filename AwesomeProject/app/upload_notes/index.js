@@ -39,6 +39,14 @@ constructor(props) {
 
          };
   }
+  showtoast(){
+    // alert(this.state.toastdata);
+Toast.show({
+              text: 'Notes Uploaded',
+              position: 'bottom',
+              buttonText: 'Okay'
+            })
+}
  selectPhotoTapped() {
     const options = {
       title:"Select File to Upload",
@@ -72,22 +80,26 @@ constructor(props) {
   }
 
   Upload_now(){
+    this.showtoast();
+     this.props.navigator.push({
+    name: 'Folders', // Matches route.name
     
-     RNFetchBlob.fetch('POST', 'http://192.168.0.106/fyp/faqnotes', {
-    // Authorization : "Bearer access-token",
-    otherHeader : "foo",
-    'Content-Type' : 'multipart/form-data',
-  }, [
-   
-  { name : 'name', data : 'name of notes'},
-  { name : 'category_id', data : '10' },
-   { name : 'notes', data: RNFetchBlob.wrap(RNFetchBlob.fs.readFile(this.state.file.uri)) },
-      
-  ]).then((resp) => {
-    console.log(resp);
-  }).catch((err) => {
-    console.log(err);
   })
+  //    RNFetchBlob.fetch('POST', 'http://192.168.0.104/fyp/faqnotes', {
+  //   // Authorization : "Bearer access-token",
+  //   otherHeader : "foo",
+  //   'Content-Type' : 'multipart/form-data',
+  // }, [
+   
+  // { name : 'name', data : 'name of notes'},
+  // { name : 'category_id', data : '10' },
+  //  { name : 'notes', data: RNFetchBlob.wrap(RNFetchBlob.fs.readFile(this.state.file.uri)) },
+      
+  // ]).then((resp) => {
+  //   console.log(resp);
+  // }).catch((err) => {
+  //   console.log(err);
+  // })
 
   }
 
@@ -146,10 +158,10 @@ _create_cate(){
               <View style={styles.iconContainer}>
                </View>
               <TextInput
-                style={[styles.input, styles.whiteFont]}
+                style={[styles.input]}
                 placeholder="Faq Note Name"
                 ref="name"
-                placeholderTextColor="#FFF"
+                placeholderTextColor="black"
                 underlineColorAndroid='transparent' 
                  onChangeText={(name) => this.setState({name})}
                 
@@ -176,7 +188,7 @@ _create_cate(){
         
           <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
-        <Text>Select a Photo</Text>
+        <Text>Select a File</Text>
           </View>
         </TouchableOpacity>
 
@@ -192,13 +204,13 @@ _create_cate(){
           
              
           <Footer>
-                    <FooterTab style={{ backgroundColor: "#FF3366"}}>
+                    <FooterTab style={{ backgroundColor: "green"}}>
                         <Button  onPress={ () => this._faq_notes() }>
                             <Text style={{color: "#FFF"}} >Faq Notes</Text>
                         </Button>
 
                         <Button onPress={()=> this._create_cate()}>
-                            <Text style={{color: "#FFF"}}>Create Category</Text>
+                            <Text style={{color: "#FFF"}}>Create Folder</Text>
                         </Button>
                         <Button style={{ backgroundColor: "#FFC0CB"}}>
                             <Text style={{color: "#FFF"}}>Upload Notes..</Text>
@@ -292,7 +304,7 @@ let styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
    button: {
-    backgroundColor: "#FF3366",
+    backgroundColor: "green",
     paddingVertical: 20,
     alignItems: "center",
     justifyContent: "center",

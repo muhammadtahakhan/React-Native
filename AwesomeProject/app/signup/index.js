@@ -47,7 +47,7 @@ _signup(){
  let password = this.state.password;
 
 
-    fetch('http://192.168.0.103/fyp/user', {
+    fetch('http://192.168.0.104/fyp/user', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -106,10 +106,10 @@ _signup(){
                 />
               </View>
               <TextInput
-                style={[styles.input, styles.whiteFont]}
+                style={[styles.input]}
                 placeholder="Name"
                 ref="name"
-                placeholderTextColor="#FFF"
+                placeholderTextColor="black"
                 underlineColorAndroid='transparent' 
                  onChangeText={(name) => this.setState({name})}
                 
@@ -125,9 +125,9 @@ _signup(){
                 />
               </View>
               <TextInput
-                style={[styles.input, styles.whiteFont]}
+                style={[styles.input]}
                 placeholder="Email"
-                placeholderTextColor="#FFF" 
+                placeholderTextColor="black" 
                 onChangeText={(email) => this.setState({email})}
               />
             </View>
@@ -142,9 +142,9 @@ _signup(){
               </View>
               <TextInput
                 secureTextEntry={true}
-                style={[styles.input, styles.whiteFont]}
+                style={[styles.input]}
                 placeholder="Password"
-                placeholderTextColor="#FFF" 
+                placeholderTextColor="black" 
                 onChangeText={(password) => this.setState({password})}
               />
             </View>
@@ -252,7 +252,7 @@ let styles = StyleSheet.create({
     fontSize: 20,
   },
   signup: {
-    backgroundColor: '#FF3366',
+    backgroundColor: 'green',
     paddingVertical: 25,
     alignItems: 'center',
     justifyContent: 'center',

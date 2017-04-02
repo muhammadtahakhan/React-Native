@@ -9,9 +9,10 @@ import {Toast, Container, Header, Title, Button, Left, Right, Body, Icon, Conten
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import LoginScreen from "./app/login/index";
 import SignupScreen from "./app/signup/index";
-// import UploadForm from "./app/upload/index";
+
 import Uploadnotes from "./app/upload_notes/index";
 import Folders from "./app/folders/index";
+import Folders2 from "./app/folders2/index";
 import Createcate from "./app/create_category/index";
 import Slider from './app/slider'
 import {
@@ -41,14 +42,16 @@ renderScene(route, navigator) {
    if(route.name == 'LoginScreen') {
      return <LoginScreen navigator={navigator} />
    }
-   if(route.name == 'SignupScreen') {UploadForm
+   if(route.name == 'SignupScreen') {
      return <SignupScreen navigator={navigator} />
    }
-  //  if(route.name == 'UploadForm') {
-  //    return <UploadForm navigator={navigator} />
-  //  }
+ 
    if(route.name == 'Folders') {
      return <Folders navigator={navigator}/>
+   }
+
+    if(route.name == 'Stu') {
+     return <Folders2 navigator={navigator}/>
    }
   
     if(route.name == 'Createcate') {
@@ -91,7 +94,7 @@ Toast.show({
             
                       <Navigator
                             style={{ flex:1 }}
-                            initialRoute={{ name: 'Uploadnotes' }}
+                            initialRoute={{ name: 'LoginScreen' }}
                             renderScene={ this.renderScene.bind(this) } 
                             configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
                             />
@@ -147,7 +150,7 @@ const styles = StyleSheet.create({
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
+    color: 'green',
     marginBottom: 5,
   },
 });

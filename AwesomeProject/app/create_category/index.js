@@ -50,7 +50,7 @@ _faq_notes(){
 _create(){
  let name = this.state.name;
  console.log(name);
-    fetch('http://192.168.0.103/fyp/categoty', {
+    fetch('http://192.168.0.104/fyp/categoty', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -118,13 +118,13 @@ _create(){
           </View>
              
           <Footer>
-                    <FooterTab style={{ backgroundColor: "#FF3366"}}>
+                    <FooterTab style={{ backgroundColor: "green"}}>
                         <Button  onPress={ () => this._faq_notes() }>
                             <Text style={{color: "#FFF"}} >Faq Notes</Text>
                         </Button>
 
                         <Button style={{ backgroundColor: "#FFC0CB"}} >
-                            <Text style={{color: "#FFF"}}>Create Category</Text>
+                            <Text style={{color: "#FFF"}}>Create Folder</Text>
                         </Button>
                         <Button onPress={ () => this._upload_notes() }>
                             <Text style={{color: "#FFF"}}>Upload Notes</Text>
@@ -218,7 +218,7 @@ let styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
    button: {
-    backgroundColor: "#FF3366",
+    backgroundColor: "green",
     paddingVertical: 20,
     alignItems: "center",
     justifyContent: "center",
