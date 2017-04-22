@@ -53,7 +53,7 @@ AsyncStorage.getItem("@MySuperStore:jtoken")
         .then((value) =>{ 
           // console.log('in ' + value);
         this.setState({"utoken": value});  
-                  fetch('http://192.168.0.104/fyp/users', {
+                  fetch('http://192.168.2.2/fyp/users', {
                   method: 'GET',
                   headers: {
                   'authorization': this.state.utoken,
@@ -88,7 +88,7 @@ _login(){
   let password = this.state.password;
 
 
-    fetch('http://192.168.0.104/fyp/token', {
+    fetch('http://192.168.2.2/fyp/token', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
