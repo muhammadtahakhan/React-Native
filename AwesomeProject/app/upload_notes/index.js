@@ -31,13 +31,12 @@ constructor(props) {
     super(props);
     this.state = { 
       name: null,
+      content: null,
       category_id: null,
-      meta_date:null,
-      notes:null,
-      file:null
-     
-
+      textInputValue: null
+    
          };
+        //  Get_categories();
   }
   showtoast(){
     // alert(this.state.toastdata);
@@ -47,61 +46,50 @@ Toast.show({
               buttonText: 'Okay'
             })
 }
- selectPhotoTapped() {
-    const options = {
-      title:"Select File to Upload",
-      mediaType:"mixed",
-      // quality: 1.0,
-      // maxWidth: 500,
-      // maxHeight: 500,
-      storageOptions: {
-        skipBackup: true
-      }
-    };
 
-    FilePickerManager.showFilePicker(null, (response) => {
-  console.log('Response = ', response);
- 
-  if (response.didCancel) {
-    console.log('User cancelled file picker');
-  }
-  else if (response.error) {
-    console.log('FilePickerManager Error: ', response.error);
-  }
-  else {
-    console.log(response);
-    console.log(response.uri);
-    this.setState({
-      file: response
-    });
-    // this.Upload_now();
-  }
-});
-  }
+Get_categories(){
+   fetch('http://192.168.0.102/fyp/categories', {
+  method: 'GEt',
+  headers: {
+    // 'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  
+    }) 
+    .then(  (response) => response.json()  ) 
+    .then((responseJson) => { 
+      console.log(responseJson);
+      
+     })
+}
 
-  Upload_now(){
+Upload_now(){
+    let named = this.state.name;
+    let contentd = this.state.content;
+    let category_idd = this.state.category_id;
+    fetch('http://192.168.0.102/fyp/faqnotes', {
+  method: 'POST',
+  headers: {
+    // 'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    name: named,
+    content: contentd,
+    category_id: category_idd
+  })
+    }) 
+     // .then(  (response) => response.json()  ) 
+    .then((responseJson) => { 
+      console.log(responseJson);
+      
+    
+     }) 
     this.showtoast();
      this.props.navigator.push({
     name: 'Folders', // Matches route.name
-    
-  })
-  //    RNFetchBlob.fetch('POST', 'http://192.168.0.104/fyp/faqnotes', {
-  //   // Authorization : "Bearer access-token",
-  //   otherHeader : "foo",
-  //   'Content-Type' : 'multipart/form-data',
-  // }, [
-   
-  // { name : 'name', data : 'name of notes'},
-  // { name : 'category_id', data : '10' },
-  //  { name : 'notes', data: RNFetchBlob.wrap(RNFetchBlob.fs.readFile(this.state.file.uri)) },
-      
-  // ]).then((resp) => {
-  //   console.log(resp);
-  // }).catch((err) => {
-  //   console.log(err);
-  // })
-
-  }
+     })
+    }
 
     
 _faq_notes(){
@@ -126,7 +114,6 @@ _create_cate(){
             { key: index++, label: 'Cranberries' },
             { key: index++, label: 'Pink Grapefruit' },
             { key: index++, label: 'Raspberries' },
-        
             { key: index++, label: 'Beets' },
             { key: index++, label: 'Red Peppers' },
             { key: index++, label: 'Radishes' },
@@ -161,16 +148,24 @@ _create_cate(){
                 style={[styles.input]}
                 placeholder="Faq Note Name"
                 ref="name"
-                placeholderTextColor="black"
+                placeholderTextColor="gray"
                 underlineColorAndroid='transparent' 
                  onChangeText={(name) => this.setState({name})}
                 
               />
-
-              
               
             </View>
-            
+             <View style={{flex:1,  padding:20}}>
+               <TextInput
+                style={[styles.input]}
+                placeholder="type here"
+                ref="content"
+                placeholderTextColor="gray"
+                underlineColorAndroid='transparent' 
+                onChangeText={(content) => this.setState({content})}
+                
+              />
+            </View>
              <View style={{flex:1,  padding:20}}>
                 <ModalPicker
                     data={data}
@@ -186,11 +181,11 @@ _create_cate(){
             </View>
            </View>
         
-          <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+          {/*<TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
         <Text>Select a File</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
 
           <View style={styles.footerContainer}>
 

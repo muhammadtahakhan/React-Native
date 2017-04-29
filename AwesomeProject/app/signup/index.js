@@ -47,7 +47,7 @@ _signup(){
  let password = this.state.password;
 
 
-    fetch('http://192.168.2.2/fyp/user', {
+    fetch('http://192.168.0.102/fyp/user', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -60,7 +60,7 @@ _signup(){
     password: password
   })
     }) 
-    .then(  (response) => response.json()  ) 
+    // .then(  (response) => response.json()  ) 
     .then((responseJson) => { 
       console.log(responseJson);
      this._navigate();

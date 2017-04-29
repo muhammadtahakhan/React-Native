@@ -18,7 +18,7 @@ const mark = require("./login1_mark.png");
 const lockIcon = require("./login1_lock.png");
 const personIcon = require("./login1_person.png");
 
-export default class Folders extends Component {
+export default class Nots extends Component {
 
 constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ constructor(props) {
   }
 
  tick() {
-    fetch('http://192.168.0.102/fyp/categories', {
+    fetch('http://192.168.0.102/fyp/nots', {
                   method: 'GET',
                   headers: {
                   'authorization': this.state.utoken,
@@ -164,12 +164,7 @@ console.log(this.state.utoken);
                             <Text style={{color: "#FFF"}} >Faq Notes</Text>
                         </Button>
 
-                        <Button onPress={ () => this._create_cate() }>
-                            <Text style={{color: "#FFF"}}>Create Folder</Text>
-                        </Button>
-                        <Button onPress={()=> this._upload_notes()}>
-                            <Text style={{color: "#FFF"}}>Upload Notes</Text>
-                        </Button>
+                      
                   </FooterTab>
                 </Footer>
                

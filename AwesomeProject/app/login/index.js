@@ -53,7 +53,7 @@ AsyncStorage.getItem("@MySuperStore:jtoken")
         .then((value) =>{ 
           // console.log('in ' + value);
         this.setState({"utoken": value});  
-                  fetch('http://192.168.2.2/fyp/users', {
+                  fetch('http://192.168.0.102/fyp/users', {
                   method: 'GET',
                   headers: {
                   'authorization': this.state.utoken,
@@ -62,13 +62,15 @@ AsyncStorage.getItem("@MySuperStore:jtoken")
                   })
                   .then((response) => response.json()) 
                   .then((responseJson) => { 
-                  console.log(responseJson.status);
-                  if(responseJson.status!=0){
-                   if(responseJson.teacher==1){
+                     console.log(responseJson.teacher+" token");
+                  console.log(responseJson.teacher+" is teacher");
+                  if(responseJson.status!='0'){
+                   if(responseJson.teacher=='1'){
                         this.props.navigator.push({
                       name: 'Folders', // Matches route.name
                     });
-                      }else{
+                      }
+                      if(responseJson.teacher=='0'){
                   this.props.navigator.push({
                       name: 'Stu', // Matches route.name
                     });
@@ -88,7 +90,7 @@ _login(){
   let password = this.state.password;
 
 
-    fetch('http://192.168.2.2/fyp/token', {
+    fetch('http://192.168.0.102/fyp/token', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
@@ -98,26 +100,28 @@ _login(){
     username: username,
     password: password
   })
-    }) .then((response) => response.json()) 
+    }) 
+    .then((response) => response.json()) 
     .then((responseJson) => { 
-        //  console.log(responseJson);
+         console.log(responseJson);
                    if(responseJson.status!= "0"){
                      
              AsyncStorage.setItem('@MySuperStore:jtoken', responseJson.token);
+             AsyncStorage.setItem('@MySuperStore:jtokenrol', responseJson.teacher);
 // try {
 //     AsyncStorage.getItem("@MySuperStore:jtoken").then((value) => {
 //     console.log(value);
 //     });
-
+// 
 // } catch (error) {
 //       // Error retrieving data
 //       console.log("error in async token");
 // }
-                   if(responseJson.teacher==1){
+                   if(responseJson.teacher=='1'){
                         this.props.navigator.push({
                       name: 'Folders', // Matches route.name
                     });
-                      }else{
+                      }if(responseJson.teacher=='0'){
                   this.props.navigator.push({
                       name: 'Stu', // Matches route.name
                     });

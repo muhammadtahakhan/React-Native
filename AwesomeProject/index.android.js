@@ -9,6 +9,7 @@ import {Toast, Container, Header, Title, Button, Left, Right, Body, Icon, Conten
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import LoginScreen from "./app/login/index";
 import SignupScreen from "./app/signup/index";
+import Nots from './app/nots/index';
 
 import Uploadnotes from "./app/upload_notes/index";
 import Folders from "./app/folders/index";
@@ -59,6 +60,9 @@ renderScene(route, navigator) {
    }
    if(route.name == 'Uploadnotes') {
      return <Uploadnotes navigator={navigator}/>
+   }
+    if(route.name == 'Nots') {
+     return <Nots navigator={navigator}/>
    }
 }
 

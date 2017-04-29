@@ -32,7 +32,7 @@ constructor(props) {
   }
 
  tick() {
-    fetch('http://192.168.2.2/fyp/categories', {
+    fetch('http://192.168.0.102/fyp/categories', {
                   method: 'GET',
                   headers: {
                   'authorization': this.state.utoken,
@@ -103,7 +103,7 @@ componentDidMount(){
         .then((value) => { 
           // console.log('in ' + value);
         this.setState({"utoken": value});  
-                  fetch('http://192.168.2.2/fyp/categories', {
+                  fetch('http://192.168.0.102/fyp/categories', {
                   method: 'GET',
                   headers: {
                   'authorization': this.state.utoken,

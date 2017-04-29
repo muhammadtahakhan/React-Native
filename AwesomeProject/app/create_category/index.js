@@ -50,7 +50,7 @@ _faq_notes(){
 _create(){
  let name = this.state.name;
  console.log(name);
-    fetch('http://192.168.0.104/fyp/categoty', {
+    fetch('http://192.168.0.102/fyp/categoty', {
   method: 'POST',
   headers: {
     // 'Accept': 'application/json',
