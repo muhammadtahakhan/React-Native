@@ -148,7 +148,7 @@ console.log(this.state.utoken);
                         <CardItem>
                             <Body>
                                 <Text>
-                                   {item.category_name}
+                                   {item.name}
                                 </Text>
                             </Body>
                         </CardItem>

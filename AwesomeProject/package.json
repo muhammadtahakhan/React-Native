@@ -12,6 +12,7 @@
     "react-native": "0.42.0",
     "react-native-fetch-blob": "^0.10.2",
     "react-native-file-picker": "0.0.5",
+    "react-native-html-to-pdf": "^0.3.0",
     "react-native-modal-picker": "0.0.16",
     "react-native-side-menu": "^0.20.1",
     "react-native-simple-modal": "^4.0.2",

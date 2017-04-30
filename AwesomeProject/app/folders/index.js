@@ -11,6 +11,8 @@ import {
   AsyncStorage
 } from 'react-native';
 
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+
 const { width, height } = Dimensions.get("window");
 
 const background = require("./login1_bg.png");
@@ -130,6 +132,46 @@ console.log(this.state.utoken);
 
 
 
+  createPDF() {
+    var options = {
+      html: '<h1>PDF TEST</h1>', // HTML String
+
+      // ****************** OPTIONS BELOW WILL NOT WORK ON ANDROID **************                              
+      fileName: 'test',          /* Optional: Custom Filename excluded extension
+                                    Default: Randomly generated
+                                  */
+
+
+      directory: 'docs',         /* Optional: 'docs' will save the file in the `Documents`
+                                    Default: Temp directory
+                                  */
+
+      base64: true,               /* Optional: get the base64 PDF value
+                                    Default: false
+                                 */
+
+      height: 800,               /* Optional: 800 sets the height of the DOCUMENT that will be produced
+
+                                    Default: 612
+                                  */
+      width: 1056,               /* Optional: 1056 sets the width of the DOCUMENT that will produced
+                                    Default: 792
+                                  */
+      padding: 24,                /* Optional: 24 is the # of pixels between the outer paper edge and
+                                            corresponding content edge.  Example: width of 1056 - 2*padding
+                                            => content width of 1008
+                                    Default: 10
+                                  */
+    };
+
+    RNHTMLtoPDF.convert(options).then((data) => {
+      console.log(data.filePath);
+      console.log(data.base64);
+    });
+  }
+
+
+
 
   render() {
     var items = this.state.categories
@@ -142,13 +184,18 @@ console.log(this.state.utoken);
           style={[styles.container, styles.bg]}
           resizeMode="cover">
                 <Content>
+                   <View>
+      <TouchableOpacity onPress={this.createPDF}>
+        <Text>Create PDF</Text>
+      </TouchableOpacity>
+    </View>
                     <List dataArray={items}
                         renderRow={(item) =>
                             <Card>
                         <CardItem>
                             <Body>
                                 <Text>
-                                   {item.category_name}
+                                   {item.name}
                                 </Text>
                             </Body>
                         </CardItem>
