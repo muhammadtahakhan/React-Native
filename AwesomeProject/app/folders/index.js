@@ -132,12 +132,12 @@ console.log(this.state.utoken);
 
 
 
-  createPDF() {
+  createPDF(data, name) {
     var options = {
-      html: '<h1>PDF TEST</h1>', // HTML String
+      html: '<p>'+data+'</p>', // HTML String
 
       // ****************** OPTIONS BELOW WILL NOT WORK ON ANDROID **************                              
-      fileName: 'test',          /* Optional: Custom Filename excluded extension
+      fileName: name,          /* Optional: Custom Filename excluded extension
                                     Default: Randomly generated
                                   */
 
@@ -168,6 +168,13 @@ console.log(this.state.utoken);
       console.log(data.filePath);
       console.log(data.base64);
     });
+
+    Toast.show({
+              text: 'doc created',
+              position: 'bottom',
+              buttonText: 'Okay'
+            })
+    
   }
 
 
@@ -176,6 +183,10 @@ console.log(this.state.utoken);
   render() {
     var items = this.state.categories
     //  var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <li>{number}</li>
+);
 
     return (
      <Container>
@@ -185,23 +196,30 @@ console.log(this.state.utoken);
           resizeMode="cover">
                 <Content>
                    <View>
-      <TouchableOpacity onPress={this.createPDF}>
+      <TouchableOpacity onPress={this.createPDF('<h1>Hello Taha</h1>')}>
         <Text>Create PDF</Text>
       </TouchableOpacity>
     </View>
-                    <List dataArray={items}
+   <ul>
+     {this.state.users.map(function(items, i){
+       return <li key={i}>{items.name}</li>
+     }}
+   </ul>
+                    {/*<List dataArray={items}
                         renderRow={(item) =>
                             <Card>
-                        <CardItem>
+                        <CardItem >
+                          <TouchableOpacity onPress={this.createPDF(item.content, item.name)}>
                             <Body>
                                 <Text>
                                    {item.name}
                                 </Text>
                             </Body>
+                            </TouchableOpacity>
                         </CardItem>
                     </Card>
                         }>
-                    </List>
+                    </List>*/}
                    
                 </Content>
                  </Image>
