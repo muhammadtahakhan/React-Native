@@ -232,7 +232,7 @@ const listItems = numbers.map((number) =>
                  <Footer>
                     <FooterTab style={{ backgroundColor: "green"}}>
                         <Button style={{ backgroundColor: "#FFC0CB"}} >
-                            <Text style={{color: "#FFF"}} >Faq Notes</Text>
+                            <Text style={{color: "#FFF"}} >Fac Notes</Text>
                         </Button>
 
                       

@@ -202,7 +202,7 @@ _create_cate(){
           <Footer>
                     <FooterTab style={{ backgroundColor: "green"}}>
                         <Button  onPress={ () => this._faq_notes() }>
-                            <Text style={{color: "#FFF"}} >Faq Notes</Text>
+                            <Text style={{color: "#FFF"}} >Fac Notes</Text>
                         </Button>
 
                         {/*<Button onPress={()=> this._create_cate()}>

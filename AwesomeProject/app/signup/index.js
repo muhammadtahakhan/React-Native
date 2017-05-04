@@ -40,13 +40,35 @@ _navigate(){
   })
 }
 
+showtoast(){
+    // alert(this.state.toastdata);
+Toast.show({
+              text: 'Not a valid email',
+              position: 'bottom',
+              buttonText: 'Okay'
+            })
+}
+
+ validateEmail() {
+   x = this.state.email
+// var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        // alert("Not a valid e-mail address");
+        return false;
+    }else{
+      return true;
+    }
+}
+
 _signup(){
  let username = this.state.email;
  let myname = this.state.name
  let emial = this.state.email;
  let password = this.state.password;
 
-
+if(this.validateEmail()){
     fetch('http://192.168.0.102/fyp/user', {
   method: 'POST',
   headers: {
@@ -66,6 +88,9 @@ _signup(){
      this._navigate();
      }) 
     // .catch((error) => { console.error(error); });
+    }else{
+      this.showtoast();
+    }
 }
 
   render() {
