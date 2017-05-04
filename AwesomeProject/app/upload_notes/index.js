@@ -66,7 +66,8 @@ Get_categories(){
 Upload_now(){
     let named = this.state.name;
     let contentd = this.state.content;
-    let category_idd = this.state.category_id;
+    // let category_idd = this.state.category_id;
+    let category_idd = 1;
     fetch('http://192.168.0.102/fyp/faqnotes', {
   method: 'POST',
   headers: {
@@ -166,7 +167,7 @@ _create_cate(){
                 
               />
             </View>
-             <View style={{flex:1,  padding:20}}>
+             {/*<View style={{flex:1,  padding:20}}>
                 <ModalPicker
                     data={data}
                     initValue="Select Category!"
@@ -178,7 +179,7 @@ _create_cate(){
                         value={this.state.textInputValue} />
                         
                 </ModalPicker>
-            </View>
+            </View>*/}
            </View>
         
           {/*<TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
@@ -204,9 +205,9 @@ _create_cate(){
                             <Text style={{color: "#FFF"}} >Faq Notes</Text>
                         </Button>
 
-                        <Button onPress={()=> this._create_cate()}>
+                        {/*<Button onPress={()=> this._create_cate()}>
                             <Text style={{color: "#FFF"}}>Create Folder</Text>
-                        </Button>
+                        </Button>*/}
                         <Button style={{ backgroundColor: "#FFC0CB"}}>
                             <Text style={{color: "#FFF"}}>Upload Notes..</Text>
                         </Button>

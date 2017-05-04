@@ -64,6 +64,16 @@ Toast.show({
 }
 
 
+showtoastdownload(){
+    // alert(this.state.toastdata);
+// Toast.show({
+//               text: 'download completed check your doc',
+//               position: 'bottom',
+//               buttonText: 'Okay'
+//             })
+}
+
+
 _navigate(){
   this.props.navigator.push({
     name: 'SignupScreen', // Matches route.name
@@ -169,11 +179,11 @@ console.log(this.state.utoken);
       console.log(data.base64);
     });
 
-    Toast.show({
-              text: 'doc created',
-              position: 'bottom',
-              buttonText: 'Okay'
-            })
+    // Toast.show({
+    //           text: 'doc created',
+    //           position: 'bottom',
+    //           buttonText: 'Okay'
+    //         })
     
   }
 
@@ -195,23 +205,19 @@ const listItems = numbers.map((number) =>
           style={[styles.container, styles.bg]}
           resizeMode="cover">
                 <Content>
-                   <View>
+                   {/*<View>
       <TouchableOpacity onPress={this.createPDF('<h1>Hello Taha</h1>')}>
         <Text>Create PDF</Text>
       </TouchableOpacity>
-    </View>
-   <ul>
-     {this.state.users.map(function(items, i){
-       return <li key={i}>{items.name}</li>
-     }}
-   </ul>
-                    {/*<List dataArray={items}
+    </View>*/}
+  
+                    <List dataArray={items}
                         renderRow={(item) =>
                             <Card>
                         <CardItem >
                           <TouchableOpacity onPress={this.createPDF(item.content, item.name)}>
                             <Body>
-                                <Text>
+                                <Text onPress={this.showtoastdownload()}>
                                    {item.name}
                                 </Text>
                             </Body>
@@ -219,7 +225,7 @@ const listItems = numbers.map((number) =>
                         </CardItem>
                     </Card>
                         }>
-                    </List>*/}
+                    </List>
                    
                 </Content>
                  </Image>
@@ -229,9 +235,9 @@ const listItems = numbers.map((number) =>
                             <Text style={{color: "#FFF"}} >Faq Notes</Text>
                         </Button>
 
-                        <Button onPress={ () => this._create_cate() }>
+                        {/*<Button onPress={ () => this._create_cate() }>
                             <Text style={{color: "#FFF"}}>Create Folder</Text>
-                        </Button>
+                        </Button>*/}
                         <Button onPress={()=> this._upload_notes()}>
                             <Text style={{color: "#FFF"}}>Upload Notes</Text>
                         </Button>
