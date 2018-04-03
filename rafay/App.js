@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import { Button } from 'native-base';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -26,7 +27,11 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to Taha in React Native !
+          
         </Text>
+        <Button full light>
+            <Text>Light</Text>
+          </Button>
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
