@@ -12,6 +12,21 @@ import {
   View
 } from 'react-native';
 import { Button } from 'native-base';
+import {AuthNavigator} from './src/routes/authnavigator'
+import { StackNavigator } from 'react-navigation';
+import Login from './src/screens/login';
+import Home from './src/screens/home';
+// const AuthNavigator = StackNavigator({
+//             Login: {    screen: Login,
+//                       },
+//             Home: {
+//                         screen: Home,
+//                       },
+//                     },
+//         {
+//         initialRouteName: 'Login',
+//                   }
+//               );
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -24,24 +39,12 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Taha in React Native !
-          
-        </Text>
-        <Button full light>
-            <Text>Light</Text>
-          </Button>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <AuthNavigator />
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
