@@ -15,17 +15,14 @@ import { Button } from 'native-base';
 
 
 // Import navigators
-import { StackNavigator } from 'react-navigation';
-import {  MainNavigator }from './src/routes/mainnavigator';
-import { AuthNavigator } from './src/routes/authnavigator';
-import { RootNavigator } from './src/routes/rootnavigator';
 
+import SwitchNavigator from './src/routes/switchnavigator';
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <RootNavigator />
+      <SwitchNavigator />
     );
   }
 }
