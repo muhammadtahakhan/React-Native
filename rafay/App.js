@@ -12,34 +12,20 @@ import {
   View
 } from 'react-native';
 import { Button } from 'native-base';
-import {AuthNavigator} from './src/routes/authnavigator'
-import { StackNavigator } from 'react-navigation';
-import Login from './src/screens/login';
-import Home from './src/screens/home';
-// const AuthNavigator = StackNavigator({
-//             Login: {    screen: Login,
-//                       },
-//             Home: {
-//                         screen: Home,
-//                       },
-//                     },
-//         {
-//         initialRouteName: 'Login',
-//                   }
-//               );
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+
+// Import navigators
+import { StackNavigator } from 'react-navigation';
+import {  MainNavigator }from './src/routes/mainnavigator';
+import { AuthNavigator } from './src/routes/authnavigator';
+import { RootNavigator } from './src/routes/rootnavigator';
+
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <AuthNavigator />
+      <RootNavigator />
     );
   }
 }

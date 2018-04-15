@@ -1,13 +1,16 @@
 import { StackNavigator } from 'react-navigation';
 import Login from './../screens/login';
-import Home from './../screens/home';
+// import Home from './../screens/home';
+
+import {AuthNavigator} from './authnavigator';
+import {MainNavigator} from './mainnavigator';
 
 export const RootNavigator = StackNavigator({
-            Login: {    screen: Login,
-                      },
-            
+  AuthNavigator: {    screen: AuthNavigator       },
+  MainNavigator: {    screen: MainNavigator      },
+                
                     },
         {
-        initialRouteName: 'Login',
+        initialRouteName: 'AuthNavigator',
                   }
               );
