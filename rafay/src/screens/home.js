@@ -53,7 +53,7 @@ export default class Home extends Component<Props> {
          
                             
               </Content>
-              <Jmfooter />
+              <Jmfooter navigation={this.props.navigation} />
               
       </Container>
      

@@ -8,32 +8,23 @@ import HouseAddress from './../screens/house_address';
 import HoseMonitoring from './../screens/house_monitoring';
 import Profile from './../screens/profile';
 import Services from './../screens/services';
+import Painter from "./../screens/painter";
+
 
 export const MainNavigator = StackNavigator({
-                  Login: {   
-                     screen: Login,
-                  },
-                  Home: {
-                       screen: Home,
-                  },
-                  
-                  Gardener: {
-                      screen: Gardener,
-                  },
+                  Login: {   screen: Login, },
+                  Home: {   screen: Home, },
+                  Gardener: {screen: Gardener, },
+                  Painter: {screen: Painter, },
+                  Electrician: {  screen: Electrician,  },
+                  AccountLedger: {  screen: AccountLedger,  },
+                  HouseAddress: {   screen: HouseAddress,   },
+                  Profile: {   screen: Profile,   },
+                  Services: {   screen: Services,   },
                  
-                  Electrician: {
-                       screen: Electrician,
-                  },
-                  
-                  AccountLedger: {
-                       screen: AccountLedger,
-                  },
-                  
-                  HouseAddress: {
-                        screen: HouseAddress,
-                  },
+           
                 },     
         {
-        initialRouteName: 'HouseAddress',
+        initialRouteName: 'Electrician',
                   }
               );

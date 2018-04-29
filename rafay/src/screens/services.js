@@ -28,7 +28,7 @@ export default class Services extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Home" />
+          <Jmheader title="services" />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>
@@ -41,11 +41,37 @@ export default class Services extends Component<Props> {
                
                 </Col>
               </Grid>
+
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-               
-                  <Button block bordered info onPress={() => this.props.navigation.goBack()} >
-                  <Text> Go back </Text>
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('Electrician')} >
+                  <Text> Electrician </Text>
+                  </Button>
+                </Col>
+              </Grid>
+
+               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('Painter')} >
+                  <Text> Painter </Text>
+                  </Button>
+                </Col>
+              </Grid>
+
+              
+
+               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('Profile')} >
+                  <Text> Plumber</Text>
+                  </Button>
+                </Col>
+              </Grid>
+
+               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('Gardener')} >
+                  <Text> Gardener </Text>
                   </Button>
                 </Col>
               </Grid>
@@ -53,7 +79,7 @@ export default class Services extends Component<Props> {
          
                             
               </Content>
-              <Jmfooter />
+              <Jmfooter navigation={this.props.navigation} />
               
       </Container>
      

@@ -28,7 +28,7 @@ export default class Profile extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Home" />
+          <Jmheader title="Profile" />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>
@@ -44,16 +44,25 @@ export default class Profile extends Component<Props> {
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
                
-                  <Button block bordered info onPress={() => this.props.navigation.goBack()} >
-                  <Text> Go back </Text>
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('Services')} >
+                  <Text> House address </Text>
                   </Button>
                 </Col>
               </Grid>
+              <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
+               
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('Services')} >
+                  <Text> Account ledger </Text>
+                  </Button>
+                </Col>
+              </Grid>
+             
 
          
                             
               </Content>
-              <Jmfooter />
+              <Jmfooter navigation={this.props.navigation}/>
               
       </Container>
      

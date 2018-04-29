@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import {
-  StyleSheet,
+  StyleSheet,View
   
 } from 'react-native';
 import {Container, Header, Content, Footer, Title, Label, TextInput,
@@ -16,6 +16,8 @@ import {Container, Header, Content, Footer, Title, Label, TextInput,
 import { navigationOptions, navigation } from 'react-navigation';
 import  Jmheader from './../components/jmheader'
 import Jmfooter from './../components/jmfooter';
+
+
 
 
 type Props = {};
@@ -41,11 +43,17 @@ export default class Electrician extends Component<Props> {
                
                 </Col>
               </Grid>
+
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-               
+                
+                </Col>
+              </Grid>
+
+              <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
                   <Button block bordered info onPress={() => this.props.navigation.goBack()} >
-                  <Text> Go back </Text>
+                  <Text> Go back... </Text>
                   </Button>
                 </Col>
               </Grid>
@@ -53,7 +61,7 @@ export default class Electrician extends Component<Props> {
          
                             
               </Content>
-              <Jmfooter />
+              <Jmfooter navigation={this.props.navigation} />
               
       </Container>
      
@@ -62,8 +70,12 @@ export default class Electrician extends Component<Props> {
 }
 
 
-
 const styles = StyleSheet.create({
-  
+  container: {
+    justifyContent: 'center',
+    marginTop: 50,
+    padding: 20,
+    backgroundColor: '#ffffff',
+  },
 });
 

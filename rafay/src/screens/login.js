@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet,Alert} from 'react-native';
+import { StyleSheet,Alert, AsyncStorage} from 'react-native';
 import {Container, Header, Content, Footer, Title, Label, TextInput,
   Input, InputGroup, Button, Icon, Form, Item,
   FooterTab, Text, Badge ,Grid, Col
@@ -45,6 +45,7 @@ export default class Login extends Component<Props> {
         .then((responseData) => {
           Alert.alert(responseData.message);  
             if(responseData.status) {
+              // await   AsyncStorage.setItem("userToken", responseData.api_token);
               this.props.navigation.navigate('App');
             }
           })

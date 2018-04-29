@@ -53,7 +53,7 @@ export default class AccountLedger extends Component<Props> {
          
                             
               </Content>
-              <Jmfooter />
+              <Jmfooter navigation={this.props.navigation} />
               
       </Container>
      
