@@ -11,18 +11,35 @@ type Props = {};
 export default class AuthLoadingScreen extends Component<Props> {
   constructor(props) {
     super(props);
-    this._bootstrapAsync();
+    
   }
 
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
+  
+    try {
+      const userToken = await AsyncStorage.getItem('@userToken:key').then((value)=> {console.warn(value)});
+      this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+      // console.warn(userToken);
+      if (userToken !== null){
+        // We have data!!
+        // console.warn(userToken);
+        // This will switch to the App screen or Auth screen and this loading
+        // screen will be unmounted and thrown away.
+        // this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+        
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
 
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    // this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-    this.props.navigation.navigate(userToken ? 'App' : 'App');
+    
   };
+
+
+  componentDidMount(){
+    this._bootstrapAsync();
+  }
 
   // Render any loading content that you like here
   render() {

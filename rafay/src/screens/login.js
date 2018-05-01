@@ -45,8 +45,21 @@ export default class Login extends Component<Props> {
         .then((responseData) => {
           Alert.alert(responseData.message);  
             if(responseData.status) {
-              // await   AsyncStorage.setItem("userToken", responseData.api_token);
+              console.warn(responseData.api_token);
+            
+             switch (responseData.user_type) {
+              case 'admin':
+              this.props.navigation.navigate('Admin');
+                  break;
+              case 'sp':
+              this.props.navigation.navigate('Sp');
+                  break;
+              case 'user':
               this.props.navigation.navigate('App');
+                  break;
+             
+          }
+            
             }
           })
         .done();
@@ -55,6 +68,14 @@ export default class Login extends Component<Props> {
     }
     
   }
+
+  async saveKey(value) {
+    try {
+      await AsyncStorage.setItem('@userToken:key', value);
+    } catch (error) {
+      console.log("Error saving data" + error);
+    }
+}
 
   componentDidMount(){
    
