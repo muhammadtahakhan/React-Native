@@ -19,5 +19,5 @@ import { AdminNavigator } from './adminnavigator';
         Sp : SpNavigator
       },
       {
-        initialRouteName: 'AuthLoading',}
+        initialRouteName: 'Sp',}
     );

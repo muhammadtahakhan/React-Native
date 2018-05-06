@@ -11,6 +11,6 @@ export const AdminNavigator = StackNavigator({
            
                 },     
         {
-        initialRouteName: 'AddServices',
+        initialRouteName: 'SerrvicesList',
                   }
               );
