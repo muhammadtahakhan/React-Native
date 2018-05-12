@@ -25,7 +25,14 @@ export default class Login extends Component<Props> {
     super(props)
     this.submitForm = this.submitForm.bind(this)
     this.updateFormField = this.updateFormField.bind(this)
+    this.saveData = this.saveData.bind(this);
   }
+
+  saveData = function(value) {
+    // AsyncStorage.setItem("users_id", value)
+    global.users_id = value ;
+   
+}
 
   async submitForm () {
     try {
@@ -45,8 +52,11 @@ export default class Login extends Component<Props> {
         .then((responseData) => {
           Alert.alert(responseData.message);  
             if(responseData.status) {
-              console.warn(responseData.api_token);
-            
+              // console.warn(responseData.api_token);
+              // Creating Global Variable.
+    
+            this.saveData(responseData.users_id);
+            global.address = responseData.address ;
              switch (responseData.user_type) {
               case 'admin':
               this.props.navigation.navigate('Admin');
@@ -69,13 +79,6 @@ export default class Login extends Component<Props> {
     
   }
 
-  async saveKey(value) {
-    try {
-      await AsyncStorage.setItem('@userToken:key', value);
-    } catch (error) {
-      console.log("Error saving data" + error);
-    }
-}
 
   componentDidMount(){
    

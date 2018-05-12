@@ -25,6 +25,6 @@ export const MainNavigator = StackNavigator({
            
                 },     
         {
-        initialRouteName: 'Electrician',
+        initialRouteName: 'Profile',
                   }
               );

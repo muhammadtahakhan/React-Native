@@ -71,7 +71,7 @@ export default class HousesList extends Component<Props> {
                 <Col>
                 <List>
 
-                {this.state.houses.map((r,i) => <ListItem key={i} onPress={() => this.props.navigation.navigate('PayCharges',{address:r.address})}>
+                {this.state.houses.map((r,i) => <ListItem key={i} onPress={() => this.props.navigation.navigate('PayCharges',{address:r.address, users_id:r.id})}>
                   <Text>{r.address}</Text>
                   </ListItem>
                 )}
