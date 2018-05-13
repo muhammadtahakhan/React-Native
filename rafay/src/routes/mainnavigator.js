@@ -9,6 +9,7 @@ import HoseMonitoring from './../screens/house_monitoring';
 import Profile from './../screens/profile';
 import Services from './../screens/services';
 import Painter from "./../screens/painter";
+import ServiceRequest from './../screens/service_request';
 
 
 export const MainNavigator = StackNavigator({
@@ -21,10 +22,11 @@ export const MainNavigator = StackNavigator({
                   HouseAddress: {   screen: HouseAddress,   },
                   Profile: {   screen: Profile,   },
                   Services: {   screen: Services,   },
+                  ServiceRequest: {   screen: ServiceRequest,   },
                  
            
                 },     
         {
-        initialRouteName: 'Profile',
+        initialRouteName: 'ServiceRequest',
                   }
               );
