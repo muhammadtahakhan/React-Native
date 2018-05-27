@@ -10,6 +10,7 @@ import Profile from './../screens/profile';
 import Services from './../screens/services';
 import Painter from "./../screens/painter";
 import ServiceRequest from './../screens/service_request';
+import SerrvicesList from './../screens/services_list';
 
 
 export const MainNavigator = StackNavigator({
@@ -23,10 +24,11 @@ export const MainNavigator = StackNavigator({
                   Profile: {   screen: Profile,   },
                   Services: {   screen: Services,   },
                   ServiceRequest: {   screen: ServiceRequest,   },
+                  SerrvicesList: {   screen: SerrvicesList,   },
                  
            
                 },     
         {
-        initialRouteName: 'ServiceRequest',
+        initialRouteName: 'Profile',
                   }
               );

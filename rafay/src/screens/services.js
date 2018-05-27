@@ -44,7 +44,7 @@ export default class Services extends Component<Props> {
 
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('Electrician')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
                   <Text> Electrician </Text>
                   </Button>
                 </Col>
@@ -52,7 +52,7 @@ export default class Services extends Component<Props> {
 
                <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('Painter')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
                   <Text> Painter </Text>
                   </Button>
                 </Col>
@@ -62,7 +62,7 @@ export default class Services extends Component<Props> {
 
                <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('Profile')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
                   <Text> Plumber</Text>
                   </Button>
                 </Col>
@@ -70,8 +70,16 @@ export default class Services extends Component<Props> {
 
                <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('Gardener')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
                   <Text> Gardener </Text>
+                  </Button>
+                </Col>
+              </Grid>
+
+              <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
+                  <Button block  info onPress={() => this.props.navigation.navigate('SerrvicesList')} >
+                  <Text>Services Charges</Text>
                   </Button>
                 </Col>
               </Grid>

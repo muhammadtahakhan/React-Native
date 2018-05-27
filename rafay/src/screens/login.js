@@ -11,6 +11,7 @@ import {Container, Header, Content, Footer, Title, Label, TextInput,
   FooterTab, Text, Badge ,Grid, Col
 } from 'native-base';
 import { navigationOptions } from 'react-navigation';
+import {API_URL} from './../utilities/Globals';
 import  Jmheader from './../components/jmheader'
 import Jmfooter from './../components/jmfooter';
 
@@ -40,7 +41,7 @@ export default class Login extends Component<Props> {
             // Now do something with email and password
             // Alert.alert(JSON.stringify(data));
 
-        fetch("http://192.168.0.107/rafay/public/login", {
+        fetch(API_URL+"login", {
           method: 'POST',
           headers: {
             Accept: 'application/json',
