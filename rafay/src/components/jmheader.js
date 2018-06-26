@@ -25,7 +25,7 @@ export default class Jmheader extends Component<Props> {
   render() {
     let logout;
     if (this.props.title != 'Login'){  
-      logout = <Text>lgoout</Text>;
+      logout = <Text>logout</Text>;
    }
     return (
     // <Container>
