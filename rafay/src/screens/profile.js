@@ -28,12 +28,13 @@ export default class Profile extends Component<Props> {
   constructor(props){
     super(props);
    
-    this.state = {isLoading: true, payments : []}
+    this.state = {isLoading: true, payments : [], installments:[]}
   }
 
   componentDidMount(){
 
     this.fetch_data();
+    this.fetch_installments();
    
   }
 
@@ -54,6 +55,34 @@ export default class Profile extends Component<Props> {
       this.setState({
          isLoading: false,
          payments: responseJson,
+         
+         }, function(){
+
+       });
+    
+     })
+     .catch((error) =>{
+       console.error(error);
+     });
+  }
+
+  fetch_installments(){
+    let data = {'users_id':global.users_id}
+    fetch(API_URL+'get_installments', {
+     method: 'POST',
+     headers: {
+       Accept: 'application/json',
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify(data)
+   })
+     .then((response) => response.json())
+     .then((responseJson) => {
+
+      console.log()
+      this.setState({
+         isLoading: false,
+         installments: responseJson[0],
          
          }, function(){
 
@@ -93,6 +122,42 @@ export default class Profile extends Component<Props> {
                   {/* </Button> */}
                 </Col>
               </Grid>
+              {/* insallments */}
+              <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
+                <Col>
+                 <Text> Installments :</Text>
+                
+
+                   
+                
+                  <ListItem >
+                 <Body>
+                    <Text>Installment 1:{this.state.installments.installment_1}</Text>
+                 </Body>
+                 </ListItem>
+
+                 <ListItem >
+                 <Body>
+                    <Text>Installment 2:{this.state.installments.installment_2}</Text>
+                 </Body>
+                 </ListItem>
+
+                 <ListItem >
+                 <Body>
+                    <Text>Installment 3:{this.state.installments.installment_3}</Text>
+                 </Body>
+                 </ListItem>
+
+                 <ListItem >
+                 <Body>
+                    <Text>Installment 4:{this.state.installments.installment_4}</Text>
+                 </Body>
+                 </ListItem>
+                
+                
+                </Col>
+              </Grid>
+              {/* insntallments end */}
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
                  <Text> Account ledger :</Text>
