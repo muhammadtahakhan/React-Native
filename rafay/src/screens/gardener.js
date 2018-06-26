@@ -28,7 +28,7 @@ export default class Gardener extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Gardener" />
+          <Jmheader title="Gardener" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

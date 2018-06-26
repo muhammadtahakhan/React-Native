@@ -28,7 +28,7 @@ export default class HouseAddress extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="House Address" />
+          <Jmheader title="House Address" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

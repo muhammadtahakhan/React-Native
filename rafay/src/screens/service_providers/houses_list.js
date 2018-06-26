@@ -62,7 +62,7 @@ export default class HousesList extends Component<Props> {
      
   
       <Container>
-          <Jmheader title="list of houses" />
+          <Jmheader title="list of houses" navigation={this.props.navigation} />
      
          
      

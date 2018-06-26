@@ -93,7 +93,7 @@ export default class ServiceRequest extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Service Request" />
+          <Jmheader title="Service Request" navigation={this.props.navigation} />
           <View>
          {(isLoading)?
            <ActivityIndicator />:<Text></Text>

@@ -30,7 +30,7 @@ export default class Electrician extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Electrician" />
+          <Jmheader title="Electrician" navigation={this.props.navigation}  />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

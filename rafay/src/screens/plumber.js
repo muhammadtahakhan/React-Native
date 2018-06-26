@@ -28,7 +28,7 @@ export default class Plumber extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Plumber" />
+          <Jmheader title="Plumber" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

@@ -28,7 +28,7 @@ export default class Painter extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Painter" />
+          <Jmheader title="Painter" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

@@ -125,7 +125,7 @@ export default class PayCharges extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title={params.address} />
+          <Jmheader title={params.address} navigation={this.props.navigation} />
           <View>
          {(isLoading)?
            <ActivityIndicator />:<Text></Text>

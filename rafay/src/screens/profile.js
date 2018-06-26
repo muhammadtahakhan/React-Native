@@ -72,7 +72,7 @@ export default class Profile extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Profile" />
+          <Jmheader title="Profile" navigation={this.props.navigation} />
              
               <Content  >
               <View>

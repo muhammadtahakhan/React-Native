@@ -96,7 +96,7 @@ export default class Login extends Component<Props> {
   render() {
     return (
       <Container>
-          <Jmheader title="Login" />
+          <Jmheader title="Login" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

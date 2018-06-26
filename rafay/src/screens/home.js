@@ -28,7 +28,7 @@ export default class Home extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Home" />
+          <Jmheader title="Home" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

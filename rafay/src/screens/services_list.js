@@ -58,7 +58,7 @@ export default class SerrvicesList extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="services List" />
+          <Jmheader title="services List" navigation={this.props.navigation} />
           <View>
           {(isLoading)?
            <ActivityIndicator />:<Text></Text>
