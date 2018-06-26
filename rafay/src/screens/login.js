@@ -108,7 +108,7 @@ export default class Login extends Component<Props> {
                   </Item>
                   <Item floatingLabel last>
                   <Label>Password</Label>
-                  <Input onChangeText={this.updateFormField('password')}/>
+                  <Input secureTextEntry={true} onChangeText={this.updateFormField('password')}/>
                   </Item>
                   </Form>
                 

@@ -1,4 +1,4 @@
-package com.rafay;
+package com.hsrms;
 
 import android.app.Application;
 
