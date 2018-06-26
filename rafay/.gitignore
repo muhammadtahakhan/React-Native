@@ -31,7 +31,7 @@ local.properties
 *.iml
 
 # node.js
-
+#
 node_modules/
 npm-debug.log
 yarn-error.log
@@ -51,4 +51,3 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-node_modules
