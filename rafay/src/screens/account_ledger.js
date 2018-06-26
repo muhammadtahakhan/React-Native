@@ -28,7 +28,7 @@ export default class AccountLedger extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Account Ledger" />
+          <Jmheader title="Account Ledger" navigation={this.props.navigation}  />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>

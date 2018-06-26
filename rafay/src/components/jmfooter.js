@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Linking } from 'react-native';
 import { Footer, FooterTab, Button, Icon, Text } from 'native-base';
 
 import { navigationOptions, navigation } from 'react-navigation';
@@ -35,7 +35,7 @@ export default class Jmfooter extends Component<Props> {
               <Icon name="add-circle" />
               <Text>Services</Text>
             </Button>
-            <Button vertical>
+            <Button vertical onPress={ ()=> Linking.openURL('https://reactnativecode.com')}>
               {/* <Badge ><Text>51</Text></Badge> */}
               <Icon name="eye" />
               <Text>Monitoring</Text>

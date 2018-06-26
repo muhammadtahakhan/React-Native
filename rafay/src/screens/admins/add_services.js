@@ -93,7 +93,7 @@ export default class AddServices extends Component<Props> {
     return (
      
       <Container>
-          <Jmheader title="Add new Service" />
+          <Jmheader title="Add new Service" navigation={this.props.navigation} />
              
               <Content  >
               <Grid style={{alignItems: 'center'}}>
