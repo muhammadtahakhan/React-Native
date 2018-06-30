@@ -44,7 +44,7 @@ export default class Services extends Component<Props> {
 
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest',{'title':'Electrician'})} >
                   <Text> Electrician </Text>
                   </Button>
                 </Col>
@@ -52,7 +52,7 @@ export default class Services extends Component<Props> {
 
                <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest',{'title':'Painter'})} >
                   <Text> Painter </Text>
                   </Button>
                 </Col>
@@ -62,7 +62,7 @@ export default class Services extends Component<Props> {
 
                <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest',{'title':'Plumber'})} >
                   <Text> Plumber</Text>
                   </Button>
                 </Col>
@@ -70,7 +70,7 @@ export default class Services extends Component<Props> {
 
                <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest')} >
+                  <Button block bordered info onPress={() => this.props.navigation.navigate('ServiceRequest',{'title':'Gardener'})} >
                   <Text> Gardener </Text>
                   </Button>
                 </Col>

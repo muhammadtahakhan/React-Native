@@ -89,11 +89,13 @@ export default class ServiceRequest extends Component<Props> {
 
   render() {
     const { state, navigate } = this.props.navigation;
+    const { navigation } = this.props;
+    const stitle = navigation.getParam('title', '');
     const isLoading =this.state.isLoading;
     return (
      
       <Container>
-          <Jmheader title="Service Request" navigation={this.props.navigation} />
+          <Jmheader title={stitle} navigation={this.props.navigation} />
           <View>
          {(isLoading)?
            <ActivityIndicator />:<Text></Text>
