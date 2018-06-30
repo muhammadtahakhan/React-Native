@@ -106,13 +106,13 @@ export default class ServiceRequest extends Component<Props> {
               <Grid style={{alignItems: 'center'}}>
                 <Col>
                 <Item floatingLabel last>
-                  <Label>Service Price</Label>
+                  <Label>Your service & date</Label>
                   <Input  onChangeText={this.updateFormField('request_content')}/>
                   </Item>
                 </Col>
               </Grid>
 
-              <Grid style={{alignItems: 'center'}}>
+              <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
                 <Button block bordered info onPress={() => this.submitForm()}>
                   <Text> Save </Text>
