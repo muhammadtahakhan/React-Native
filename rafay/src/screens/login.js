@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet,Alert, AsyncStorage} from 'react-native';
+import { StyleSheet,Alert, AsyncStorage, Image} from 'react-native';
 import {Container, Header, Content, Footer, Title, Label, TextInput,
   Input, InputGroup, Button, Icon, Form, Item,
   FooterTab, Text, Badge ,Grid, Col
@@ -97,8 +97,9 @@ export default class Login extends Component<Props> {
     return (
       <Container>
           <Jmheader title="Login" navigation={this.props.navigation} />
-             
+          
               <Content  >
+              <Image style={styles.stretch} source={require('./../logo.jpeg')} />
               <Grid style={{alignItems: 'center'}}>
                 <Col>
                 <Form>
@@ -141,6 +142,9 @@ export default class Login extends Component<Props> {
 
 
 const styles = StyleSheet.create({
-  
+  stretch: {
+    width: 390,
+    height: 150
+  }
 });
 
