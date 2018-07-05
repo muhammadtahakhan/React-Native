@@ -51,8 +51,9 @@ export default class Login extends Component<Props> {
            })
         .then((response) => response.json())
         .then((responseData) => {
-          Alert.alert(responseData.message);  
+           
             if(responseData.status) {
+              Alert.alert(responseData.message);
               // console.warn(responseData.api_token);
               // Creating Global Variable.
     
@@ -71,6 +72,8 @@ export default class Login extends Component<Props> {
              
           }
             
+            }else{
+              Alert.alert(responseData.message)
             }
           })
         .done();

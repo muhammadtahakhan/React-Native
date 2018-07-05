@@ -84,9 +84,9 @@ export default class HousesList extends Component<Props> {
 
               <Grid style={{alignItems: 'center'}} style={{padding: 30}}>
                 <Col>
-                  <Button block bordered info onPress={() => this.props.navigation.goBack()} >
+                  {/* <Button block bordered info onPress={() => this.props.navigation.goBack()} >
                   <Text> Go back... </Text>
-                  </Button>
+                  </Button> */}
                 </Col>
               </Grid>
 
